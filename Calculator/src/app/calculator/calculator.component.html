@@ -1,0 +1,23 @@
+<div>
+    <label for="value1">Enter First value:</label>
+    <input type="text" id="value1" #value1> <br><br>
+
+    <label for="value2">Enter Second value:</label>
+    <input type="text" id="value2" #value2> <br><br>
+</div>
+    
+<div>
+    <input type="button" value="+" (click)="add(value1,value2,result)"/>
+    <input type="button" value="-" (click)="sub(value1,value2,result)"/>
+    <input type="button" value="*" (click)="mul(value1,value2,result)"/>
+    <input type="button" value="/" (click)="div(value1,value2,result)"/>
+</div>
+<div>
+    
+<label for="result">Result</label>
+<input type="text"value="{{res}}" #result/>
+<input type="button" value="Reset" (click)="clear(value1,value2,result)"/>
+</div>  
+    
+    
+    

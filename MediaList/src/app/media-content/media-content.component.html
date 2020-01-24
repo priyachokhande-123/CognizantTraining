@@ -1,0 +1,29 @@
+<div>
+<h3>Add Single Media</h3>
+<div class="row">
+<div class="col"><label for="title">Enter media title</label></div>
+<div class="col"><input type="text" #title /></div>
+</div>
+<div class="row">
+<div class="col"><label for="description">Enter media description</label></div>
+<div class="col"><input type="text" #description /></div>
+</div>
+<div class="row">
+<div class="col"><label for="">Enter media tags</label><div>
+<div class="col"><input type="text" #tags /></div>
+</div>
+<!-- <div class="row">
+<div class="col"><label for="image">upload media</label></div>
+<label for="Browse">Browse</label>
+<input type="file" name="pic" accept="image/*" #image/>
+</div> -->
+<div class="row">
+<div class="col"><input type="button" value="Upload" (click)="upload(title,description,tags,images)" /></div>
+</div>
+<hr/>
+
+<app-media-list [mediaList]="media"></app-media-list>
+
+</div>
+
+           

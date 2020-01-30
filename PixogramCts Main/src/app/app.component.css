@@ -1,0 +1,28 @@
+.navbar-nav > li{
+    padding-left:20px;
+    padding-right:20px;
+  }
+  img{
+     
+      width: 100px;
+      height: 100px;
+  }
+  #profile{
+     
+    width: 150px;
+    height: 200px;
+}
+  .dropdown-submenu {
+    position: relative;
+  }
+  
+  .dropdown-submenu > .dropdown-menu {
+    left: 100%;
+    /* -6px gives dropdown-menu's padding+border */
+    top: -6px;
+  }
+  
+  .dropdown-submenu:hover > .dropdown-menu, .dropdown-submenu > a:focus + .dropdown-menu {
+    /* :focus support is incomplete - pressing Tab sets focus to submenu, but that immediately hides submenu */
+    display: block;
+  }

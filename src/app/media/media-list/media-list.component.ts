@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Media } from 'src/app/model/media.model';
-import { MediaDataService } from 'src/app/services/data/media-data.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./media-list.component.css']
 })
 export class MediaListComponent implements OnInit {
-
+/*
   
   medias : Array<Media>;
   constructor(private mediaService : MediaDataService, public router : Router) { 
@@ -21,8 +20,9 @@ export class MediaListComponent implements OnInit {
   }
 
  
- ngOnInit() {
-  this.mediaService.getMedia().subscribe((response:any) => this.medias = response);
-  }
 
+  this.mediaService.getMedia().subscribe((response:any) => this.medias = response);
+*/
+  ngOnInit() {
+      }
 }

@@ -1,3 +1,7 @@
 <pixogram-headder></pixogram-headder>
 
+<br/>
+<div *ngIf="auth.isUserLoggedIn()" class="text-success">
+    <h3>Welcome {{auth.getUserDetails()}}</h3>
+</div>
 <router-outlet></router-outlet>

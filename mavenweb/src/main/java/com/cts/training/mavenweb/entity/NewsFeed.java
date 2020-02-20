@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -21,14 +23,24 @@ public class NewsFeed {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column
-	private Integer userId;
+	
+	
+	@ManyToOne()
+	@JoinColumn(name="user_Id")
+	
+	private UserDetails user;
+	
+
+
+	@ManyToOne()
+	@JoinColumn(name="media_Id")
+	
+	private Media media;
+	
 	
 	@Column
 	private String feed;
 	
-	@Column
-	private Integer mediaId;
 	
 
 	@CreationTimestamp
@@ -53,13 +65,7 @@ public class NewsFeed {
 		this.id = id;
 	}
 
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+	
 
 	public String getFeed() {
 		return feed;
@@ -69,14 +75,7 @@ public class NewsFeed {
 		this.feed = feed;
 	}
 
-	public Integer getMediaId() {
-		return mediaId;
-	}
-
-	public void setMediaId(Integer mediaId) {
-		this.mediaId = mediaId;
-	}
-
+	
 	public LocalDateTime getCreatedOn() {
 		return createdOn;
 	}
@@ -95,7 +94,7 @@ public class NewsFeed {
 
 	@Override
 	public String toString() {
-		return "NewsFeed [id=" + id + ", userId=" + userId + ", feed=" + feed + ", mediaId=" + mediaId + ", createdOn="
+		return "NewsFeed [id=" + id + ", feed=" + feed + ",  createdOn="
 				+ createdOn + ", updatedOn=" + updatedOn + "]";
 	}
 	

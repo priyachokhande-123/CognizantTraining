@@ -1,18 +1,32 @@
 package com.cts.training.mavenweb.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity // Registers the class as entity
 //Define the mappings
 @Table(name = "action")
@@ -22,12 +36,19 @@ public class Action {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column
-	private Integer userId;
 	
+	@ManyToOne()
+	@JoinColumn(name="user_Id")
 	
-	@Column
-	private Integer mediaId;
+	private UserDetails user;
+	
+
+	@ManyToOne()
+	@JoinColumn(name="media_Id")
+	
+	private Media media;
+	
+
 	
 	@Column
 	private Boolean status;
@@ -41,7 +62,7 @@ public class Action {
 	private LocalDateTime updatedOn;
 	
 	
-	
+	/*
 
 	public Action() {
 		
@@ -55,21 +76,7 @@ public class Action {
 		this.id = id;
 	}
 
-	public Integer getUserId() {
-		return userId;
-	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
-	public Integer getMediaId() {
-		return mediaId;
-	}
-
-	public void setMediaId(Integer mediaId) {
-		this.mediaId = mediaId;
-	}
 
 	public Boolean getStatus() {
 		return status;
@@ -97,12 +104,12 @@ public class Action {
 
 	@Override
 	public String toString() {
-		return "Action [id=" + id + ", userId=" + userId + ", mediaId=" + mediaId + ", status=" + status
+		return "Action [id=" + id + ", status=" + status
 				+ ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + "]";
 	}
 	
 	
-	
+	*/
 	
 	
 }

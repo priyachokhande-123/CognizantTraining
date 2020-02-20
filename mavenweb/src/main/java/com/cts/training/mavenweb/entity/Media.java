@@ -1,30 +1,48 @@
 package com.cts.training.mavenweb.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.omg.PortableInterceptor.USER_EXCEPTION;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity // Registers the class as entity
 //Define the mappings
 @Table(name = "media")
 public class Media {
 
+	@ManyToOne()
+	@JoinColumn(name="user_Id")
+	private UserDetails user;
 
 	@Id // primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	private Integer mediaId;
-	
-	@Column
-	private Integer userId;
+	private Integer id;
 	
 	@Column
 	private String title;
@@ -59,8 +77,72 @@ public class Media {
 	private Integer size;
 	
 	
+
+	@OneToMany(mappedBy = "media")
+	private List<NewsFeed> newsfeeds = new ArrayList<NewsFeed>();
 	
+
+	@OneToMany(mappedBy = "media")
+	private List<Action> actions  = new ArrayList<Action>();
 	
+	@OneToMany(mappedBy = "media")
+	private List<Comments> comments= new ArrayList<Comments>();
+	
+	/*
+	public List<NewsFeed> getNewsfeeds() {
+		return newsfeeds;
+	}
+
+
+	public void setNewsfeeds(List<NewsFeed> newsfeeds) {
+		this.newsfeeds = newsfeeds;
+	}
+
+	
+
+
+	public List<Action> getActions() {
+		return actions;
+	}
+
+
+	public void setActions(List<Action> actions) {
+		this.actions = actions;
+	}
+
+
+	public List<Comments> getComments() {
+		return comments;
+	}
+
+
+	public void setComments(List<Comments> comments) {
+		this.comments = comments;
+	}
+
+
+	public UserDetails getUser() {
+		return user;
+	}
+
+
+	public void setUser(UserDetails user) {
+		this.user = user;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+
+
+
 	public Media() {
 		
 	}
@@ -69,25 +151,6 @@ public class Media {
 
 
 
-
-	public Integer getMediaId() {
-		return mediaId;
-	}
-
-
-
-	public void setMediaId(Integer mediaId) {
-		this.mediaId = mediaId;
-	}
-
-
-
-	public Integer getUserId() {
-		return userId;
-	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
 	public String getTitle() {
 		return title;
 	}
@@ -148,15 +211,19 @@ public class Media {
 	public void setSize(Integer size) {
 		this.size = size;
 	}
-	
-	
+
+
+
+
 
 	@Override
 	public String toString() {
-		return "Media [mediaId=" + mediaId + ", userId=" + userId + ", title=" + title + ", description=" + description
-				+ ", fileUrl=" + fileUrl + ", posterFileUrl=" + posterFileUrl + ", mimeType=" + mimeType + ", hide="
-				+ hide + ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + ", tags=" + tags + ", size=" + size
-				+ "]";
+		return "Media [user=" + user + ", id=" + id + ", title=" + title + ", description=" + description + ", fileUrl="
+				+ fileUrl + ", posterFileUrl=" + posterFileUrl + ", mimeType=" + mimeType + ", hide=" + hide
+				+ ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + ", tags=" + tags + ", size=" + size + "]";
 	}
+	
+	
+*/
 	
 }

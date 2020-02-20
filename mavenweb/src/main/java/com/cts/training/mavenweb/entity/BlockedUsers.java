@@ -1,22 +1,39 @@
 package com.cts.training.mavenweb.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity // Registers the class as entity
 //Define the mappings
 @Table(name = "blockedUser")
 public class BlockedUsers {
 
-	@Column
-	private Integer userId;
+
+	@ManyToOne()
+	@JoinColumn(name="user_Id")
+	private UserDetails user;
+
 	
 	@Column
 	private Integer blockedUserId;
@@ -29,6 +46,7 @@ public class BlockedUsers {
 	@Column
 	private LocalDateTime updatedOn;
 	
+	/*
 public BlockedUsers() {
 		
 	}
@@ -72,7 +90,7 @@ public BlockedUsers() {
 	}
 
 	
-	
+	*/
 	
 	
 }

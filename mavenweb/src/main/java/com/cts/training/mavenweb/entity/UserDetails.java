@@ -1,18 +1,32 @@
 package com.cts.training.mavenweb.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity // Registers the class as entity
 //Define the mappings
 @Table(name = "users")
@@ -21,8 +35,95 @@ public class UserDetails {
 
 	@Id // primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer userId;
+	private Integer id;
 	
+	
+	@OneToMany(mappedBy = "users")
+	private List<Media> medias = new ArrayList<Media>();
+
+
+	@OneToMany(mappedBy = "users")
+	private List<Comments> comments = new ArrayList<Comments>();
+	
+
+	@OneToMany(mappedBy = "users")
+	private List<NewsFeed> newsfeeds = new ArrayList<NewsFeed>();
+	
+
+	@OneToMany(mappedBy = "users")
+	private List<Action> actions = new ArrayList<Action>();
+	
+
+
+	@OneToMany(mappedBy = "users")
+	private List<Follow> follows = new ArrayList<Follow>();
+	
+
+	@OneToMany(mappedBy = "users")
+	private List<BlockedUsers> blockedusers= new ArrayList<BlockedUsers>();
+	
+	/*
+	
+	public List<Follow> getFollows() {
+		return follows;
+	}
+
+
+
+	public void setFollows(List<Follow> follows) {
+		this.follows = follows;
+	}
+
+
+
+	public List<Media> getMedias() {
+		return medias;
+	}
+
+
+
+	public void setMedias(List<Media> medias) {
+		this.medias = medias;
+	}
+
+
+
+	public List<Comments> getComments() {
+		return comments;
+	}
+
+
+
+	public void setComments(List<Comments> comments) {
+		this.comments = comments;
+	}
+
+
+
+	public List<NewsFeed> getNewsfeeds() {
+		return newsfeeds;
+	}
+
+
+
+	public void setNewsfeeds(List<NewsFeed> newsfeeds) {
+		this.newsfeeds = newsfeeds;
+	}
+
+
+
+	public List<Action> getActions() {
+		return actions;
+	}
+
+
+
+	public void setActions(List<Action> actions) {
+		this.actions = actions;
+	}
+
+*/
+
 	@Column
 	private String username;
 	
@@ -53,18 +154,26 @@ public class UserDetails {
 	private Boolean enabled;
 	
 	
-	
+	/*
 	
 	public UserDetails() {
 	
 	}
 	
-	public Integer getUserId() {
-		return userId;
+	
+	
+	public Integer getId() {
+		return id;
 	}
-	public void setUser_Id(Integer userId) {
-		this.userId = userId;
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
+
+
+
 	public String getUsername() {
 		return username;
 	}
@@ -119,13 +228,17 @@ public class UserDetails {
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
-	
+
+
 
 	@Override
 	public String toString() {
-		return "UserDetails [user_Id=" + userId + ", username=" + username + ", password=" + password + ", fname="
-				+ fname + ", lname=" + lname + ", email=" + email + ", profilePic=" + Arrays.toString(profilePic)
+		return "UserDetails [id=" + id + ", username=" + username + ", password=" + password + ", fname=" + fname
+				+ ", lname=" + lname + ", email=" + email + ", profilePic=" + Arrays.toString(profilePic)
 				+ ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + ", enabled=" + enabled + "]";
 	}
+	
+*/
+	
 	
 }

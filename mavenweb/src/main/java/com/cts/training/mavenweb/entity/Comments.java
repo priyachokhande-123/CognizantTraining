@@ -1,17 +1,32 @@
 package com.cts.training.mavenweb.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity // Registers the class as entity
 //Define the mappings
 @Table(name = "comments")
@@ -21,12 +36,18 @@ public class Comments {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column
-	private Integer mediaId;
+	@ManyToOne()
+	@JoinColumn(name="user_Id")
 	
-	@Column
-	private Integer userId;
+	private UserDetails user;
 	
+	@ManyToOne()
+	@JoinColumn(name="media_Id")
+	
+	private Media media;
+	
+	
+
 	@Column
 	private String comment;
 	
@@ -39,7 +60,7 @@ public class Comments {
 	private LocalDateTime updatedOn;
 	
 	
-
+/*
 	public Comments() {
 	
 	}
@@ -52,22 +73,8 @@ public class Comments {
 		this.id = id;
 	}
 
-	public Integer getMediaId() {
-		return mediaId;
-	}
 
-	public void setMediaId(Integer mediaId) {
-		this.mediaId = mediaId;
-	}
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
+	
 	public String getComment() {
 		return comment;
 	}
@@ -94,9 +101,9 @@ public class Comments {
 
 	@Override
 	public String toString() {
-		return "Comments [id=" + id + ", mediaId=" + mediaId + ", userId=" + userId + ", comment=" + comment
+		return "Comments [id=" + id + ", comment=" + comment
 				+ ", createdOn=" + createdOn + ", updatedOn=" + updatedOn + "]";
 	}
-	
+	*/
 	
 }
